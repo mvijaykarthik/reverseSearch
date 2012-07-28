@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <form action="./processUrl/" method="POST">{% csrf_token %} 
+            <table>  
+                {{ currentForm }}
+            </table>
+            <input type = "submit" value="Submit">
+        </form>
+        {% if invalidUrl %}
+        <p><b> Invalid Url </b></p>
+        {% endif %}
+    </body>
+</html>
+
+
