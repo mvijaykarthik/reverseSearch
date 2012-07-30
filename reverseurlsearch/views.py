@@ -1,5 +1,5 @@
 
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import auth
@@ -11,20 +11,15 @@ from django.utils import simplejson
 from forms import *
 
 def home(request):
-    currentForm = urlInputForm
+    currentForm = urlInputForm(request.POST)
     return render_to_response('home.html',locals(), context_instance = RequestContext(request))
 
 def processUrl(request):
     if request.method == 'POST':
         currentForm = urlInputForm(request.POST) 
-        print "l1"
         if currentForm.is_valid():
-            print "l2"
-            url = currentForm['url'].value()
-            print url
+            url = currentForm['url']
         else:
-            print "l3"
-            invalidUrl = True
             return render_to_response('home.html', locals(), context_instance = RequestContext(request))
     suggestions = ['123', '456']
     return render_to_response('suggestions.html', locals(), context_instance = RequestContext(request))
