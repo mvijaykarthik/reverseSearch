@@ -102,6 +102,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'reverseurlsearch.urls'
 
+
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'reverseurlsearch.wsgi.application'
 
